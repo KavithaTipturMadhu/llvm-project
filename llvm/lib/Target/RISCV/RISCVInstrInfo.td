@@ -455,6 +455,7 @@ def SLLI : Shift_ri<0, 0b001, "slli">;
 def SRLI : Shift_ri<0, 0b101, "srli">;
 def SRAI : Shift_ri<1, 0b101, "srai">;
 
+//TODO: something like this, in case the format is I, the class ALU_rr is defined in the same file
 def ADD  : ALU_rr<0b0000000, 0b000, "add">, Sched<[WriteIALU, ReadIALU, ReadIALU]>;
 def SUB  : ALU_rr<0b0100000, 0b000, "sub">, Sched<[WriteIALU, ReadIALU, ReadIALU]>;
 def SLL  : ALU_rr<0b0000000, 0b001, "sll">, Sched<[WriteIALU, ReadIALU, ReadIALU]>;
