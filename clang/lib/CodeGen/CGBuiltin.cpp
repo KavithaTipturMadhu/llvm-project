@@ -1942,6 +1942,11 @@ RValue CodeGenFunction::EmitBuiltinExpr(const GlobalDecl GD, unsigned BuiltinID,
 
   switch (BuiltinID) {
   default: break;
+  case Builtin::BI__builtin_positop: {
+		Value *F = CGM.getIntrinsic(Intrinsic::positop);
+		Value *Args[] = { EmitScalarExpr(E->getArg(0)), EmitScalarExpr(E->getArg(1)) };
+		return RValue::get(Builder.CreateCall(F, Args));
+  }
   case Builtin::BI__builtin___CFStringMakeConstantString:
   case Builtin::BI__builtin___NSStringMakeConstantString:
     return RValue::get(ConstantEmitter(*this).emitAbstract(E, E->getType()));

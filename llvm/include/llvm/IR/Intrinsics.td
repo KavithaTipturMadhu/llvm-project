@@ -1517,6 +1517,8 @@ def int_preserve_struct_access_index : Intrinsic<[llvm_anyptr_ty],
                                                  [IntrNoMem,
                                                   ImmArg<ArgIndex<1>>,
                                                   ImmArg<ArgIndex<2>>]>;
+/*Dummy intrinsic for example*/
+def positop : Intrinsic<[llvm_half_ty],[llvm_half_ty,llvm_half_ty],[IntrNoMem]>;
 
 //===---------- Intrinsics to query properties of scalable vectors --------===//
 def int_vscale : Intrinsic<[llvm_anyint_ty], [], [IntrNoMem]>;
