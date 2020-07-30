@@ -226,6 +226,7 @@ def llvm_i8_ty         : LLVMType<i8>;
 def llvm_i16_ty        : LLVMType<i16>;
 def llvm_i32_ty        : LLVMType<i32>;
 def llvm_i64_ty        : LLVMType<i64>;
+def llvm_posit16_ty    : LLVMType<posit16>;
 def llvm_half_ty       : LLVMType<f16>;
 def llvm_bfloat_ty     : LLVMType<bf16>;
 def llvm_float_ty      : LLVMType<f32>;
@@ -1517,8 +1518,8 @@ def int_preserve_struct_access_index : Intrinsic<[llvm_anyptr_ty],
                                                  [IntrNoMem,
                                                   ImmArg<ArgIndex<1>>,
                                                   ImmArg<ArgIndex<2>>]>;
-/*Dummy intrinsic for example*/
-def positop : Intrinsic<[llvm_half_ty],[llvm_half_ty,llvm_half_ty],[IntrNoMem]>;
+/*Dummy intrinsic for example, instrnomem indicates non memory op, hence can be reordered*/
+def int_positop : Intrinsic<[llvm_posit16_ty],[llvm_posit16_ty,llvm_posit16_ty],[IntrNoMem]>;
 
 //===---------- Intrinsics to query properties of scalable vectors --------===//
 def int_vscale : Intrinsic<[llvm_anyint_ty], [], [IntrNoMem]>;

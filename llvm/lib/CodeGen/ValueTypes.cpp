@@ -152,6 +152,7 @@ std::string EVT::getEVTString() const {
     if (isFloatingPoint())
       return "f" + utostr(getSizeInBits());
     llvm_unreachable("Invalid EVT!");
+  case MVT::posit16: return "posit16";
   case MVT::bf16:    return "bf16";
   case MVT::ppcf128: return "ppcf128";
   case MVT::isVoid:  return "isVoid";
@@ -179,6 +180,7 @@ Type *EVT::getTypeForEVT(LLVMContext &Context) const {
   case MVT::i32:     return Type::getInt32Ty(Context);
   case MVT::i64:     return Type::getInt64Ty(Context);
   case MVT::i128:    return IntegerType::get(Context, 128);
+  case MVT::posit16: return Type::getPositTy(Context);
   case MVT::f16:     return Type::getHalfTy(Context);
   case MVT::bf16:     return Type::getBFloatTy(Context);
   case MVT::f32:     return Type::getFloatTy(Context);
@@ -455,6 +457,7 @@ MVT MVT::getVT(Type *Ty, bool HandleUnknown){
     return MVT::isVoid;
   case Type::IntegerTyID:
     return getIntegerVT(cast<IntegerType>(Ty)->getBitWidth());
+  case Type::PositTypeID:   return MVT(MVT::posit16);
   case Type::HalfTyID:      return MVT(MVT::f16);
   case Type::BFloatTyID:    return MVT(MVT::bf16);
   case Type::FloatTyID:     return MVT(MVT::f32);

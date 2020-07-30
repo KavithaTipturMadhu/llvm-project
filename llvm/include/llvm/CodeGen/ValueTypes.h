@@ -152,6 +152,9 @@ namespace llvm {
       return isSimple() ? V.isScalarInteger() : isExtendedScalarInteger();
     }
 
+    bool isPosit() const{
+    	return V.isPosit();
+    }
     /// Return true if this is a vector value type.
     bool isVector() const {
       return isSimple() ? V.isVector() : isExtendedVector();

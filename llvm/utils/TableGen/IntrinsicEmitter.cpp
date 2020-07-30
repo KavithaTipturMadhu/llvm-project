@@ -246,7 +246,8 @@ enum IIT_Info {
   IIT_SUBDIVIDE4_ARG = 45,
   IIT_VEC_OF_BITCASTS_TO_INT = 46,
   IIT_V128 = 47,
-  IIT_BF16 = 48
+  IIT_BF16 = 48,
+  IIT_POSIT16=49
 };
 
 static void EncodeFixedValueType(MVT::SimpleValueType VT,
@@ -268,6 +269,7 @@ static void EncodeFixedValueType(MVT::SimpleValueType VT,
   default: PrintFatalError("unhandled MVT in intrinsic!");
   case MVT::f16: return Sig.push_back(IIT_F16);
   case MVT::bf16: return Sig.push_back(IIT_BF16);
+  case MVT::posit16: return Sig.push_back(IIT_POSIT16);
   case MVT::f32: return Sig.push_back(IIT_F32);
   case MVT::f64: return Sig.push_back(IIT_F64);
   case MVT::f128: return Sig.push_back(IIT_F128);

@@ -74,7 +74,9 @@ public:
     StructTyID,        ///< Structures
     ArrayTyID,         ///< Arrays
     FixedVectorTyID,   ///< Fixed width SIMD vector type
-    ScalableVectorTyID ///< Scalable SIMD vector type
+    ScalableVectorTyID, ///< Scalable SIMD vector type
+	PositTypeID /// New Datatype for POSIT
+
   };
 
 private:
@@ -196,6 +198,8 @@ public:
 
   /// True if this is an instance of IntegerType.
   bool isIntegerTy() const { return getTypeID() == IntegerTyID; }
+
+  bool isPositTy() const {return getTypeID() == PositTypeID;}
 
   /// Return true if this is an IntegerType of the given width.
   bool isIntegerTy(unsigned Bitwidth) const;
@@ -396,6 +400,7 @@ public:
   //
   static Type *getVoidTy(LLVMContext &C);
   static Type *getLabelTy(LLVMContext &C);
+  static Type *getPositTy(LLVMContext &C);
   static Type *getHalfTy(LLVMContext &C);
   static Type *getBFloatTy(LLVMContext &C);
   static Type *getFloatTy(LLVMContext &C);

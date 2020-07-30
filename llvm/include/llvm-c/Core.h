@@ -162,7 +162,8 @@ typedef enum {
   LLVMMetadataTypeKind,  /**< Metadata */
   LLVMX86_MMXTypeKind,   /**< X86 MMX */
   LLVMTokenTypeKind,     /**< Tokens */
-  LLVMScalableVectorTypeKind /**< Scalable SIMD vector type */
+  LLVMScalableVectorTypeKind, /**< Scalable SIMD vector type */
+  LLVMPositTypeKind
 } LLVMTypeKind;
 
 typedef enum {
@@ -1195,6 +1196,11 @@ LLVMTypeRef LLVMFP128TypeInContext(LLVMContextRef C);
  */
 LLVMTypeRef LLVMPPCFP128TypeInContext(LLVMContextRef C);
 
+/*
+ * Obtain 16 bit posit
+ */
+LLVMTypeRef LLVMPositTypeInContext(LLVMContextRef C);
+
 /**
  * Obtain a floating point type from the global context.
  *
@@ -1207,6 +1213,7 @@ LLVMTypeRef LLVMDoubleType(void);
 LLVMTypeRef LLVMX86FP80Type(void);
 LLVMTypeRef LLVMFP128Type(void);
 LLVMTypeRef LLVMPPCFP128Type(void);
+LLVMTypeRef LLVMPositType(void);
 
 /**
  * @}
